@@ -69,7 +69,7 @@ public class Bank
         {
             public void actionPerformed(ActionEvent e)
             {
-                JInternalFrame f1 = new JInternalFrame(("Credit"), true, true, t rue, true);
+                JInternalFrame f1 = new JInternalFrame(("Credit"), true, true, true, true);
                 f1.setBackground( Color.orange);
                 
                 JLabel l=new JLabel("Amount : ");
@@ -209,6 +209,109 @@ public class Bank
             
         });
         
+        b4.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+               JInternalFrame f1 = new JInternalFrame(("Transfer"), true, true, true, true);
+                f1.setBackground( Color.orange);
+                
+                JTextField jt1=new JTextField();
+                JTextField jt2=new JTextField();
+                JLabel l1=new JLabel("Enter The Sender Account Number : ");
+                JLabel l2=new JLabel("Enter The Reciever Account Number : ");
+                
+                JButton submit = new JButton("Submit");
+                
+                submit.setBounds(190,350,160,50);
+                l1.setBounds(70,120,250,50);
+                l2.setBounds(70,180,250,50);
+                jt1.setBounds(300,120,200,50);
+                jt2.setBounds(300,190,200,50);
+              
+               
+                desktop.add(f1);
+                f1.add(submit);f1.add(l1);f1.add(jt1);f1.add(l2);f1.add(jt2);
+                
+                 
+                submit.setBackground(Color.CYAN);
+                submit.setForeground(Color.black);
+                
+            
+                f1.setVisible(true);
+                f1.setLayout(null);
+                f1.setSize(580,660);
+                
+                
+                submit.addActionListener(new ActionListener()
+                {
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        JInternalFrame f1 = new JInternalFrame(("Transfer Amount"), true, true, true, true);
+                        JLabel l=new JLabel("Amount : ");
+                        JTextField jt=new JTextField();
+                
+                        JButton submit = new JButton("Submit");
+                        l.setBounds(100,200,400,50);
+                        jt.setBounds(200,200,200,50);
+                        submit.setBounds(190,350,160,50);
+              
+               
+                        desktop.add(f1);
+                        f1.add(submit);f1.add(l);f1.add(jt);
+                
+                 
+                        submit.setBackground(Color.CYAN);
+                        submit.setForeground(Color.black);
+                
+            
+                        f1.setVisible(true);
+                        f1.setLayout(null);
+                        f1.setSize(580,660);
+                        
+                        submit.addActionListener(new ActionListener()
+                        {
+                            public void actionPerformed(ActionEvent e)
+                            {
+                               JInternalFrame f1 = new JInternalFrame(("Succesfull"), true, true, true, true);
+                               f1.setBackground( Color.LIGHT_GRAY);
+                               JLabel l1=new JLabel("Amount Is Transfered : ");
+                             
+                               l1.setBounds(150,100,300,50);
+                              
+                        
+                              int amount=500000;
+                              JLabel jl=new JLabel();
+                              desktop.add(f1);
+                              f1.add(jl);
+                              f1.add(l1);
+                        
+                              jl.setBounds(100,200,300,50);
+                        
+                              int a = Integer.parseInt(jt.getText());
+               
+                              int credit=amount-a;
+                              String s3=String.valueOf(credit);
+                              jl.setText("Balance is  : "+ s3); 
+                              jl.setForeground(Color.red);
+                    
+                        
+                              f1.setVisible(true);
+                              f1.setLayout(null);
+                              f1.setSize(580,660);
+                                
+                            }
+                            
+                        });
+    
+                    }
+                    
+                });
+               
+            }
+            
+        });
+        
         reset.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -224,8 +327,8 @@ public class Bank
         desktop.add(b2);desktop.add(b4);desktop.add(jt);
         desktop.add(l1);desktop.add(reset);desktop.add(l);
 
-        f.add(BorderLayout.CENTER, desktop);
-        f.setSize(600, 700);
+        f.add(BorderLayout.CENTER,desktop);
+        f.setSize(600,700);
         f.setVisible(true);
         f.setLocationRelativeTo(null);
     }
